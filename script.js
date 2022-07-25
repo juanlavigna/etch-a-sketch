@@ -1,6 +1,8 @@
 const CONTAINER = document.querySelector(".container");
 const BUTTON_SIZE = document.querySelector("#size");
 const SQUARES = document.querySelectorAll(".container>div");
+const BUTTON_RGB = document.querySelector("#random-color")
+let newDiv
 let gridSize = 16;
 const gridPx = 500;
 
@@ -17,12 +19,22 @@ function resize (size, square){
 function makeGrid(size){
     size = Math.pow(size, 2)
     for(let i = 0; i < size; i++){
-        let newDiv = document.createElement("div");
+        newDiv = document.createElement("div");
         newDiv.classList.add("square");
         CONTAINER.appendChild(newDiv);
         resize(size, newDiv);
+        CONTAINER.style.border = "1px solid grey"
+        drawRGB(newDiv)
         newDiv.addEventListener("mouseover", draw(newDiv));
     }
+}
+
+function drawRGB(newDiv){
+    BUTTON_RGB.addEventListener("click", function(){
+        newDiv.addEventListener("mouseover", function(){
+            newDiv.style.backgroundColor = randomRGB()
+        })
+    })
 }
 
 function draw(newDiv) {
@@ -43,4 +55,12 @@ BUTTON_SIZE.addEventListener("click", function(){
     gridSize = prompt("Ingrese cantidad de cuadrados por lado");
     makeGrid(gridSize);
 })
+
+function randomRGB (){
+    let r = Math.floor(Math.random()*256)
+    let g = Math.floor(Math.random()*256)
+    let b = Math.floor(Math.random()*256)
+    return `rgb(${r}, ${g}, ${b})`
+}
+
 
