@@ -3,7 +3,7 @@ const BUTTON_SIZE = document.querySelector("#size");
 const SQUARES = document.querySelectorAll(".container>div");
 const BUTTON_RGB = document.querySelector("#random-color")
 let newDiv
-let gridSize = 16;
+let gridSize = 20;
 const gridPx = 500;
 
 makeGrid(gridSize)
@@ -30,11 +30,15 @@ function makeGrid(size){
 }
 
 function drawRGB(newDiv){
-    BUTTON_RGB.addEventListener("click", function(){
-        newDiv.addEventListener("mouseover", function(){
-            newDiv.style.backgroundColor = randomRGB()
-        })
-    })
+    BUTTON_RGB.addEventListener("click", colorPaint(newDiv))
+}
+
+function colorPaint(newDiv) {
+    return function () {
+        newDiv.addEventListener("mouseover", function () {
+            newDiv.style.backgroundColor = randomRGB();
+        });
+    };
 }
 
 function draw(newDiv) {
