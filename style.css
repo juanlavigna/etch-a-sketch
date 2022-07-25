@@ -1,13 +1,13 @@
 .container{
     width: 500px;
-    height: 500px;
+    max-height: 500px;
 }
 
 .square{
     box-sizing: border-box;
     float: left;
-    width: 30px; 
-    height: 30px; 
+    /* width: 30px; 
+    height: 30px; */
     margin: 0;
     padding: 0;
     border: 1px solid grey;
